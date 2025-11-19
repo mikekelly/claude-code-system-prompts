@@ -251,6 +251,25 @@ function createReadmeEntry(prompt, filename, tokens, isBold = false) {
 }
 
 /**
+ * Parse existing token counts from README
+ */
+function parseReadmeTokenCounts() {
+  const tokenCounts = new Map();
+  try {
+    const readme = readFileSync(README_PATH, 'utf-8');
+    // Match patterns like: (./system-prompts/filename.md) (**123** tks)
+    const regex = /\(\.\/system-prompts\/([^)]+\.md)\)\s*\(\*\*(\d+)\*\*\s*tks\)/g;
+    let match;
+    while ((match = regex.exec(readme)) !== null) {
+      tokenCounts.set(match[1], parseInt(match[2], 10));
+    }
+  } catch (err) {
+    // README doesn't exist yet, that's fine
+  }
+  return tokenCounts;
+}
+
+/**
  * Main update function
  */
 async function updateFromJSON(jsonPath) {
@@ -260,11 +279,15 @@ async function updateFromJSON(jsonPath) {
   console.log(`Version: ${jsonData.version}`);
   console.log(`Prompts count: ${jsonData.prompts.length}`);
 
+  // Get existing token counts from README
+  const existingTokenCounts = parseReadmeTokenCounts();
+
   // Track all prompts by filename
   const promptsByFilename = new Map();
   const changedPrompts = new Set();
   const newPrompts = new Set();
   const promptsToCount = [];
+  const unchangedPrompts = [];
 
   // First pass: Process files and identify what needs token counting
   for (const prompt of jsonData.prompts) {
@@ -283,24 +306,38 @@ async function updateFromJSON(jsonPath) {
         unlinkSync(filepath); // Delete old file
         writeFileSync(filepath, newMarkdownContent);
         changedPrompts.add(filename);
+        // Need to recount tokens for changed prompts
+        promptsToCount.push({ filename, content: reconstructedContent, prompt });
+      } else {
+        // Unchanged - use existing token count from README
+        unchangedPrompts.push({ filename, prompt });
       }
     } else {
       console.log(`\x1b[31mNew: ${filename}\x1b[0m`);
       writeFileSync(filepath, newMarkdownContent);
       newPrompts.add(filename);
+      // Need to count tokens for new prompts
+      promptsToCount.push({ filename, content: reconstructedContent, prompt });
     }
-
-    // Store for token counting
-    promptsToCount.push({ filename, content: reconstructedContent, prompt });
   }
 
-  // Batch count tokens for all prompts
-  console.log(`\x1b[34mCounting tokens for ${promptsToCount.length} prompts...\x1b[0m`);
-  const tokenCounts = await countTokensBatch(promptsToCount);
+  // Only count tokens for new/changed prompts
+  const tokenCounts = new Map();
+  if (promptsToCount.length > 0) {
+    console.log(`\x1b[34mCounting tokens for ${promptsToCount.length} new/changed prompts...\x1b[0m`);
+    const newCounts = await countTokensBatch(promptsToCount);
+    newCounts.forEach((tokens, filename) => tokenCounts.set(filename, tokens));
+  }
 
   // Store prompt info for README updates
   for (const { filename, prompt } of promptsToCount) {
     const tokens = tokenCounts.get(filename) || 0;
+    promptsByFilename.set(filename, { prompt, tokens });
+  }
+
+  // Use existing token counts for unchanged prompts
+  for (const { filename, prompt } of unchangedPrompts) {
+    const tokens = existingTokenCounts.get(filename) || 0;
     promptsByFilename.set(filename, { prompt, tokens });
   }
 
