@@ -1,6 +1,6 @@
 # Claude Code System Prompts
 
-This repository contains an up-to-date list of all Claude Code's various system prompts and their associated token counts as of **[Claude Code v2.0.49](https://www.npmjs.com/package/@anthropic-ai/claude-code/v/2.0.49) (November 20th, 2025).**  It also contains a [**CHANGELOG.md**](./CHANGELOG.md) for the system prompts across 31 versions since v2.0.14.
+This repository contains an up-to-date list of all Claude Code's various system prompts and their associated token counts as of **[Claude Code v2.0.50](https://www.npmjs.com/package/@anthropic-ai/claude-code/v/2.0.50) (November 21st, 2025).**  It also contains a [**CHANGELOG.md**](./CHANGELOG.md) for the system prompts across 31 versions since v2.0.14.
 
 Why multiple "system prompts?"
 
@@ -56,8 +56,8 @@ Sub-agents and utilities.
 - [Agent Prompt: Conversation summarization](./system-prompts/agent-prompt-conversation-summarization.md) (**1121** tks) - System prompt for creating detailed conversation summaries.
 - [Agent Prompt: Multi-Agent Planning Note](./system-prompts/agent-prompt-multi-agent-planning-note.md) (**324** tks) - Part of the Plan mode system reminder instructing the model how to use multiple agents to plan solutions.  Included only if the CLAUDE_CODE_PLAN_V2_AGENT_COUNT environment variable is set to a number greater than 1..
 - [Agent Prompt: Prompt Hook execution](./system-prompts/agent-prompt-prompt-hook-execution.md) (**134** tks) - Prompt given to Claude when acting evaluating whether to pass or fail a prompt hook..
-- [Agent Prompt: Session notes template](./system-prompts/agent-prompt-session-notes-template.md) (**226** tks) - Template structure for session notes tracking coding work and decisions.
-- [Agent Prompt: Session notes update instructions](./system-prompts/agent-prompt-session-notes-update-instructions.md) (**730** tks) - Instructions for updating session notes files during conversations.
+- [Agent Prompt: Session notes template](./system-prompts/agent-prompt-session-notes-template.md) (**260** tks) - Template structure for session notes tracking coding work and decisions.
+- [Agent Prompt: Session notes update instructions](./system-prompts/agent-prompt-session-notes-update-instructions.md) (**759** tks) - Instructions for updating session notes files during conversations.
 - [Agent Prompt: Session title and branch generation](./system-prompts/agent-prompt-session-title-and-branch-generation.md) (**333** tks) - System prompt for generating succinct titles and git branch names for coding sessions.
 - [Agent Prompt: Update Magic Docs](./system-prompts/agent-prompt-update-magic-docs.md) (**718** tks) - Prompt for the magic-docs agent..
 - [Agent Prompt: User sentiment analysis](./system-prompts/agent-prompt-user-sentiment-analysis.md) (**205** tks) - System prompt for analyzing user frustration and PR creation requests.
@@ -94,6 +94,7 @@ Text for large system reminders.
 - [System Reminder: Plan mode is active (for subagents)](./system-prompts/system-reminder-plan-mode-is-active-for-subagents.md) (**310** tks) - Simplified plan mode system reminder for sub agents.
 - [System Reminder: Plan mode is active](./system-prompts/system-reminder-plan-mode-is-active.md) (**242** tks) - System reminder sent to Claude when the user enters plan mode.
 - [System Reminder: Plan mode re-entry](./system-prompts/system-reminder-plan-mode-re-entry.md) (**194** tks) - System reminder sent when the user enters Plan mode after having previously exited it either via shift+tab or by approving Claude's plan..
+- [System Reminder: `mcp-cli` Large Output](./system-prompts/system-reminder-mcp-cli-large-output.md) (**265** tks) - System reminder sent when the output of an `mcp-cli read` or `mcp-cli call` command is greater than the MAX_MCP_OUTPUT_TOKENS environment variable (defaults to 25000).
 
 ### Builtin Tool Descriptions
 
@@ -111,7 +112,7 @@ Text for large system reminders.
 - [Tool Description: Task](./system-prompts/tool-description-task.md) (**1055** tks) - Tool description for launching specialized sub-agents to handle complex tasks.
 - [Tool Description: TodoWrite](./system-prompts/tool-description-todowrite.md) (**2167** tks) - Tool description for creating and managing task lists.
 - [Tool Description: WebFetch](./system-prompts/tool-description-webfetch.md) (**278** tks) - Tool description for web fetch functionality.
-- [Tool Description: WebSearch](./system-prompts/tool-description-websearch.md) (**166** tks) - Tool description for web search functionality.
+- [Tool Description: WebSearch](./system-prompts/tool-description-websearch.md) (**303** tks) - Tool description for web search functionality.
 - [Tool Description: Write](./system-prompts/tool-description-write.md) (**159** tks) - Tool description creating/overwriting writing individual files.
 
 **Additional notes for some Tool Desscriptions**
