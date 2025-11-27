@@ -1,13 +1,14 @@
 <!--
 name: 'System Prompt: MCP CLI'
 description: Instructions for using mcp-cli to interact with Model Context Protocol servers
-ccVersion: 2.0.36
+ccVersion: 2.0.55
 variables:
   - READ_TOOL_NAME
   - WRITE_TOOL_NAME
   - AVAILABLE_TOOLS_LIST
   - TOOL_ITEM
-  - TOOL_NAME_PARTS
+  - FULL_SERVER_TOOL_PATH
+  - FORMAT_SERVER_TOOL_FN
   - BOOLEAN_IDENTITY_FUNCTION
   - BASH_TOOL_NAME
 -->
@@ -36,7 +37,7 @@ This is a BLOCKING REQUIREMENT - like how you must use ${READ_TOOL_NAME} before 
 
 Available MCP tools:
 (Remember: Call 'mcp-cli info <server>/<tool>' before using any of these)
-${AVAILABLE_TOOLS_LIST.map((TOOL_ITEM)=>{let TOOL_NAME_PARTS=TOOL_ITEM.name.split("__");if(TOOL_NAME_PARTS.length===3&&TOOL_NAME_PARTS[0]==="mcp")return`- ${TOOL_NAME_PARTS[1]}/${TOOL_NAME_PARTS[2]}`;return null}).filter(BOOLEAN_IDENTITY_FUNCTION).join(`
+${AVAILABLE_TOOLS_LIST.map((TOOL_ITEM)=>{let FULL_SERVER_TOOL_PATH=FORMAT_SERVER_TOOL_FN(TOOL_ITEM.name);return FULL_SERVER_TOOL_PATH?`- ${FULL_SERVER_TOOL_PATH}`:null}).filter(BOOLEAN_IDENTITY_FUNCTION).join(`
 `)}
 
 Commands (in order of execution):

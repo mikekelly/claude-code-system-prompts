@@ -1,6 +1,6 @@
 # Claude Code System Prompts
 
-This repository contains an up-to-date list of all Claude Code's various system prompts and their associated token counts as of **[Claude Code v2.0.54](https://www.npmjs.com/package/@anthropic-ai/claude-code/v/2.0.54) (November 25th, 2025).**  It also contains a [**CHANGELOG.md**](./CHANGELOG.md) for the system prompts across 35 versions since v2.0.14.
+This repository contains an up-to-date list of all Claude Code's various system prompts and their associated token counts as of **[Claude Code v2.0.55](https://www.npmjs.com/package/@anthropic-ai/claude-code/v/2.0.55) (November 26th, 2025).**  It also contains a [**CHANGELOG.md**](./CHANGELOG.md) for the system prompts across 36 versions since v2.0.14.
 
 Why multiple "system prompts?"
 
@@ -57,6 +57,7 @@ Sub-agents and utilities.
 - [Agent Prompt: Conversation summarization](./system-prompts/agent-prompt-conversation-summarization.md) (**1121** tks) - System prompt for creating detailed conversation summaries.
 - [Agent Prompt: Multi-Agent Planning Note](./system-prompts/agent-prompt-multi-agent-planning-note.md) (**348** tks) - Part of the Plan mode system reminder instructing the model how to use multiple agents to plan solutions.  Included only if the CLAUDE_CODE_PLAN_V2_AGENT_COUNT environment variable is set to a number greater than 1..
 - [Agent Prompt: Prompt Hook execution](./system-prompts/agent-prompt-prompt-hook-execution.md) (**134** tks) - Prompt given to Claude when acting evaluating whether to pass or fail a prompt hook..
+- [Agent Prompt: Prompt Suggestion Generator](./system-prompts/agent-prompt-prompt-suggestion-generator.md) (**143** tks) - Prompt for generating suggestions for the user input after Claude responds..
 - [Agent Prompt: Session notes template](./system-prompts/agent-prompt-session-notes-template.md) (**260** tks) - Template structure for session notes tracking coding work and decisions.
 - [Agent Prompt: Session notes update instructions](./system-prompts/agent-prompt-session-notes-update-instructions.md) (**759** tks) - Instructions for updating session notes files during conversations.
 - [Agent Prompt: Session title and branch generation](./system-prompts/agent-prompt-session-title-and-branch-generation.md) (**333** tks) - System prompt for generating succinct titles and git branch names for coding sessions.
@@ -81,7 +82,7 @@ Parts of the main system prompt.
 - [**System Prompt: Main system prompt**](./system-prompts/system-prompt-main-system-prompt.md) (**2936** tks) - Core system prompt for Claude Code defining behavior, tone, and tool usage policies.
 - [System Prompt: Learning mode (insights)](./system-prompts/system-prompt-learning-mode-insights.md) (**142** tks) - Instructions for providing educational insights when learning mode is active.
 - [System Prompt: Learning mode](./system-prompts/system-prompt-learning-mode.md) (**1042** tks) - System Prompt: Main system prompt for learning mode with human collaboration instructions.
-- [System Prompt: MCP CLI](./system-prompts/system-prompt-mcp-cli.md) (**1357** tks) - Instructions for using mcp-cli to interact with Model Context Protocol servers.
+- [System Prompt: MCP CLI](./system-prompts/system-prompt-mcp-cli.md) (**1335** tks) - Instructions for using mcp-cli to interact with Model Context Protocol servers.
 - [System Prompt: whenToUse note for claude-code-guide subagent](./system-prompts/system-prompt-whentouse-note-for-claude-code-guide-subagent.md) (**123** tks) - Note on when to use the claude-code-guide subagent.
 
 ### System Reminders
