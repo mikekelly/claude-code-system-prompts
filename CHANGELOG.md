@@ -4,6 +4,16 @@ Note: Only use **NEW:** for entirely new prompt files, NOT for new additions/sec
 
 ### Claude Code System Prompts Changelog
 
+# [2.0.60](https://github.com/Piebald-AI/claude-code-system-prompts/commit/7b38ff38e8fc1b6f4e1a88b3d41f0a6d4e70f7c8)
+
+- **NEW:** System Reminder: Team Coordination - instructions for team-based multi-agent workflows with team config, task list paths, and teammate messaging
+- **NEW:** Agent Prompt: Exit plan mode with swarm - instructions for launching worker swarms when `ExitPlanMode` is called with `isSwarm` enabled
+- Agent Prompt: Claude Code guide agent → **renamed** to Claude guide agent with expanded scope covering Claude Code, Claude Agent SDK, and Claude API (formerly Anthropic API)
+- `Task` tool: Added `run_in_background` parameter documentation and `TaskOutput` tool usage for retrieving background agent results
+- `TaskUpdate` tool: Major expansion with task ownership requirements, team coordination, claiming tasks, and detailed field documentation
+- `WebFetch` tool: Added conditional instructions based on trusted domain status (simpler instructions for trusted domains)
+- **REMOVED:** System Prompt: whenToUse note for claude-code-guide subagent (functionality merged into updated guide agent)
+
 # [2.0.59](https://github.com/Piebald-AI/claude-code-system-prompts/commit/f01489b6be5c888d3e53a02609710628a29c9a0b)
 
 - **NEW:** Added new `TaskUpdate` tool which allows Claude to update the task list.
