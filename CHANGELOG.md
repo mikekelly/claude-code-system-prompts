@@ -4,6 +4,13 @@ Note: Only use **NEW:** for entirely new prompt files, NOT for new additions/sec
 
 ### Claude Code System Prompts Changelog
 
+# [2.0.72](https://github.com/Piebald-AI/claude-code-system-prompts/commit/f415c3a)
+
+_+47 tokens_
+
+- Tool Description: Task - Added usage note requiring a short description (3-5 words) summarizing what the agent will do
+- Tool Description: TaskUpdate - Added "Staleness" section with instruction to read task's latest state using `TaskGet` before updating
+
 # [2.0.71](https://github.com/Piebald-AI/claude-code-system-prompts/commit/1be49c8)
 
 _+948 tokens_
