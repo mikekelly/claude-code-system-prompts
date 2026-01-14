@@ -4,6 +4,15 @@ Note: Only use **NEW:** for entirely new prompt files, NOT for new additions/sec
 
 ### Claude Code System Prompts Changelog
 
+# [2.1.7](https://github.com/Piebald-AI/claude-code-system-prompts/commit/3772a02)
+
+_+74 tokens_
+
+- **NEW:** Tool Description: ExitPlanMode v2 (security notes) - security guidelines for scoping permissions when using the ExitPlanMode tool
+- System Prompt: Claude in Chrome browser automation - added IMPORTANT emphasis to alerts and dialogs warning about blocking browser events
+- System Reminder: Plan mode is active - clarified that plan approval questions (e.g., "Is this plan okay?", "Should I proceed?") must use ExitPlanMode tool, not text questions or AskUserQuestion; expanded guidance distinguishing when to use AskUserQuestion (only for requirements/approach clarification) vs ExitPlanMode (for plan approval)
+- Tool Description: ExitPlanMode v2 - extracted detailed security and permission scoping guidelines to new `PERMISSION_SCOPING_GUIDELINES` variable; replaced inline scoping instructions with variable reference; updated tool name references from `ASK_USER_QUESTION_TOOL_NAME` to `PERMISSION_SCOPING_GUIDELINES` in "Before Using This Tool" and "Important" sections
+
 # [2.1.6](https://github.com/Piebald-AI/claude-code-system-prompts/commit/4843349)
 
 _+742 tokens_
