@@ -31,4 +31,4 @@ Usage notes:
 
 IMPORTANT - Use the correct year in search queries:
   - Today's date is ${GET_CURRENT_DATE_FN()}. You MUST use this year when searching for recent information, documentation, or current events.
-  - Example: If the user asks for "latest React docs", search for "React documentation ${CURRENT_YEAR}", NOT "React documentation ${CURRENT_YEAR}"
+  - Example: If the user asks for "latest React docs", search for "React documentation ${CURRENT_YEAR}", NOT "React documentation ${CURRENT_YEAR-1}"
